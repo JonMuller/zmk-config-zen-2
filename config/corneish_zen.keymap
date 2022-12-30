@@ -141,7 +141,7 @@
 	combo_menu {
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <22 23 24>;
-            bindings = <&kp K_CONTEXT_MENU>;
+            bindings = <&kp LS(RG(LEFT))>;
 	};
 	 combo_repeat {
             timeout-ms = <COMBO_TIMEOUT>;
