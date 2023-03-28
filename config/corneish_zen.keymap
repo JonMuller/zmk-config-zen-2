@@ -28,6 +28,15 @@
 		,<&macro_tap &kp J &kp M &kp U &kp L &kp L &kp E &kp R &kp N8 &kp N0 &kp N8 &kp N5 &kp N1 &kp N7 &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>
                 ;
         };
+        wemail: wemail {
+            label = "wemail";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap_time 10>
+		,<&macro_tap &kp J &kp O &kp N &kp A &kp T &kp H &kp A &kp N &kp DOT &kp M &kp U &kp L &kp L &kp E &kp R &kp AT &kp E &kp E &kp H &kp E &kp A &kp L &kp T &kp H &kp DOT &kp O &kp R &kp G>
+                ;
+        };	
 	myid: myid {
             label = "myid";
             compatible = "zmk,behavior-macro";
@@ -158,6 +167,11 @@
             key-positions = <16 17 18>;
             bindings = <&kp BSPC>;
         };
+	 combo_email {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <30 31 32>;
+            bindings = <&email>;
+        };	
 	 combo_tapdnc {
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <26 27 28>;
@@ -185,6 +199,13 @@
             tapping-term-ms = <500>;
             bindings = <&myph>, <&kph>, <&myadd>;
         };
+	td1: tap_dance_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_1";
+            #binding-cells = <0>;
+            tapping-term-ms = <500>;
+            bindings = <&email>, <&wemail>, <&myadd>;
+        };	
 
         bh: layer_taps 
 		{
@@ -273,7 +294,7 @@
 // |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &bootloader  &kp AT &email &kp PAUSE_BREAK &kp SLCK              &kp C_VOL_UP &hm LC(V) LC(C)  &myid &kp LC(LA(DEL)) &bootloader 
+   &bootloader  &kp AT &td1 &kp PAUSE_BREAK &kp SLCK              &kp C_VOL_UP &hm LC(V) LC(C)  &myid &kp LC(LA(DEL)) &bootloader 
    &trans   &td0 &kp LC(LSHFT)  &mt LSHFT UP   &mt LCTRL PSCRN   &kp C_VOL_DN &myuser &slct        &kp UP &kp SEMI 
    &kp LNLCK   &trans &kp LEFT &kp DOWN &kp RIGHT              &kp C_MUTE &myadd  &kp LEFT        &kp DOWN &kp RIGHT 
         	     &kp LG(Z) &kp LG(X)   &kp LG(C)   &kp LC(LA(W))   &kp LC(LA(P))    &kp LC(LA(R))
